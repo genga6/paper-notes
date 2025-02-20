@@ -24,10 +24,17 @@ jobs:
 
             CONTENT=$(awk '!/^#labels:/{print}' "$FILE" | tail -n +2)
 
-            echo "Creating issue for $FILE"
-            gh issue create \
-              --title "$TITLE" \
-              --body "$CONTENT" \
-              --label "$LABELS" \
-              --assignee "genga6"
+            EXISTING_ISSUE=$(gh issue list --search "$TITLE" --state open --json number --jq '.[0].number')
+
+            if [ -z "$EXISTING_ISSUE" ]; then
+              echo "Creating a new issue for $FILE"
+              gh issue create \
+                --title "$TITLE" \
+                --body "$CONTENT" \
+                --label "$LABELS" \
+                --assignee "genga6"
+            else
+              echo "Updating existing issue #$EXISTING_ISSUE"
+              gh issue edit $EXISTING_ISSUE --body "$CONTENT"
+            fi
           done
