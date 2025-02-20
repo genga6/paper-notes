@@ -18,8 +18,11 @@ jobs:
         run: |
           git diff --name-only HEAD^ HEAD | grep 'notes_to_github/.*\.md' | while read FILE; do
             TITLE=$(head -n 1 "$FILE")
-            LABELS=$(grep '^#labels:' "$FILE" | cut -d':' -f2 | tr ',' '\n' | xargs | tr ' ' ',')
-            CONTENT=$(awk '!/^#labels:/{print}' "$FILE" | tail -n +2)  # #labels: を本文から除外
+
+            RAW_LABELS=$(grep '^#labels:' "$FILE" | cut -d':' -f2- | xargs)
+            LABELS=$(echo "$RAW_LABELS" | sed 's/, */,/g') 
+
+            CONTENT=$(awk '!/^#labels:/{print}' "$FILE" | tail -n +2)
 
             echo "Creating issue for $FILE"
             gh issue create \
