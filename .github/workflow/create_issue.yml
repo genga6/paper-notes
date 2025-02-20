@@ -17,10 +17,10 @@ jobs:
       - name: Extract Notes and Create Issues
         run: |
           git diff --name-only HEAD^ HEAD | grep 'notes_to_github/.*\.md' | while read FILE; do
-            TITLE=$(grep -m 1 '^title:' "$FILE" | cut -d':' -f2- | xargs)
-            LABELS=$(awk '/^tags:/ {p=1; next} p && /^  -/ {print $2} !/^  -/ {p=0}' "$FILE" | tr '\n' ',')
+            TITLE=$(grep -i -m 1 '^title:' "$FILE" | cut -d':' -f2- | xargs)
+            LABELS=$(awk '/^tags:/ {p=1; next} p && /^  -/ {print substr($0,3)} !/^  -/ {p=0}' "$FILE" | tr '\n' ',')
             CONTENT=$(awk '/^## /{p=1} p' "$FILE")
-            EXISTING_ISSUE=$(gh issue list --state open --json title,number | jq -r --arg TITLE "$TITLE" '.[] | select(.title == $TITLE) | .number')
+            EXISTING_ISSUE=$(gh issue list --search "$TITLE" --state open --json title,number | jq -r --arg TITLE "$TITLE" '.[] | select(.title == $TITLE) | .number')
 
             if [ -z "$EXISTING_ISSUE" ]; then
               echo "Creating a new issue for $FILE"
