@@ -29,7 +29,6 @@ Transformerベースのモデルが **in-context learning（ICL）** を通じ�
 
 ## Related Work 
 [- [[A Survey on In-context Learning]]](https://arxiv.org/abs/2301.00234)
-	- 
 
 
 #In-context-Learning
