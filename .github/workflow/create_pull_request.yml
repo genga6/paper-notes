@@ -1,4 +1,4 @@
-name: Create or Update Issue from Obsidian Notes
+name: Create or Update Pull Request from Obsidian Notes
 
 on:
   push:
@@ -6,31 +6,34 @@ on:
       - "notes_to_github/*.md"
 
 jobs:
-  create_issue:
+  create_or_update_pr:
     runs-on: ubuntu-latest
     env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Extract Notes and Create Issues
+      - name: Extract Notes and Create PR
         run: |
-          git diff --name-only HEAD^ HEAD | grep 'notes_to_github/.*\.md' | while read FILE; do
-            TITLE=$(grep -i -m 1 '^title:' "$FILE" | cut -d':' -f2- | xargs)
-            LABELS=$(awk '/^tags:/ {p=1; next} p && /^  -/ {print substr($0,3)} !/^  -/ {p=0}' "$FILE" | tr '\n' ',')
+          for FILE in $(git diff --name-only origin/main | grep 'notes_to_github/.*\.md'); do
+            TITLE=$(basename "$FILE" .md)
             CONTENT=$(awk '/^## /{p=1} p' "$FILE")
-            EXISTING_ISSUE=$(gh issue list --search "$TITLE" --state open --json title,number | jq -r --arg TITLE "$TITLE" '.[] | select(.title == $TITLE) | .number')
+            LABELS=$(awk '/^#/{print $0}' "$FILE" | tr '\n' ',' | sed 's/,*$//')
 
-            if [ -z "$EXISTING_ISSUE" ]; then
-              echo "Creating a new issue for $FILE"
-              gh issue create \
-                --title "$TITLE" \
+            echo "Processing $FILE"
+
+            EXISTING_PR=$(gh pr list --state open --base main --json title,number | jq -r --arg TITLE "Update: $TITLE" '.[] | select(.title == $TITLE) | .number')
+
+            if [ -z "$EXISTING_PR" ]; then
+              echo "Creating a new PR for $FILE"
+              gh pr create \
+                --title "Update: $TITLE" \
                 --body "$CONTENT" \
-                --label "$LABELS" \
-                --assignee "genga6"
+                --base main \
+                --label "$LABELS"
             else
-              echo "Updating existing issue #$EXISTING_ISSUE"
-              gh issue edit $EXISTING_ISSUE --body "$CONTENT"
+              echo "Updating existing PR #$EXISTING_PR"
+              gh pr edit "$EXISTING_PR" --body "$CONTENT"
             fi
           done
