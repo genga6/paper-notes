@@ -35,4 +35,4 @@ Adam（Adaptive Moment Estimation）は、確率的勾配降下法（SGD）の�
 
 
 ## Labels
-#Year-2015 #Optimization 
+#Year-Before-2020 #Optimization 
