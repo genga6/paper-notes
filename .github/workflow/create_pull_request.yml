@@ -1,4 +1,4 @@
-name: Create or Update Pull Request from Obsidian Notes
+name: Create or Update Issues from Obsidian Notes
 
 on:
   push:
@@ -6,34 +6,53 @@ on:
       - "notes_to_github/*.md"
 
 jobs:
-  create_or_update_pr:
+  create_or_update_issues:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
-      - name: Extract Notes and Create PR
+      - name: Fetch main branch
         run: |
-          for FILE in $(git diff --name-only origin/main | grep 'notes_to_github/.*\.md'); do
-            TITLE=$(basename "$FILE" .md)
-            CONTENT=$(awk '/^## /{p=1} p' "$FILE")
-            LABELS=$(awk '/^#/{print $0}' "$FILE" | tr '\n' ',' | sed 's/,*$//')
+          git fetch origin main     
 
+      - name: Extract Notes and Create Issues
+        run: |
+          git diff --name-only HEAD^ | grep 'notes_to_github/.*\.md' | while IFS= read -r FILE; do
+            TITLE=$(basename "$FILE" .md)
+            CONTENT=$(cat "$FILE")
+            LABELS=$(awk '/^## Labels/{p=1; next} /^## /{p=0} p {for (i=1; i<=NF; i++) if ($i ~ /^#[A-Za-z0-9_-]+$/) print substr($i,2)}' "$FILE")
             echo "Processing $FILE"
 
-            EXISTING_PR=$(gh pr list --state open --base main --json title,number | jq -r --arg TITLE "Update: $TITLE" '.[] | select(.title == $TITLE) | .number')
+            EXISTING_ISSUE=$(gh issue list --state open --json number,title | jq -r ".[] | select(.title == \"$TITLE\") | .number")
 
-            if [ -z "$EXISTING_PR" ]; then
-              echo "Creating a new PR for $FILE"
-              gh pr create \
-                --title "Update: $TITLE" \
+            if [ -z "$EXISTING_ISSUE" ]; then
+              echo "Creating a new issue for $FILE"
+              gh issue create \
+                --title "$TITLE" \
                 --body "$CONTENT" \
-                --base main \
-                --label "$LABELS"
+                $(echo "$LABELS" | tr ' ' '\n' | awk '{print "--label " $1}')
             else
-              echo "Updating existing PR #$EXISTING_PR"
-              gh pr edit "$EXISTING_PR" --body "$CONTENT"
+              echo "Updating existing issue #$EXISTING_ISSUE"
+              gh issue edit "$EXISTING_ISSUE" --body "$CONTENT"
+
+              EXISTING_LABELS=$(gh issue view "$EXISTING_ISSUE" --json labels -q '.labels[].name')
+              echo "$EXISTING_LABELS" | while IFS= read -r label; do
+                gh issue edit "$EXISTING_ISSUE" --remove-label "$label"
+              done
+              
+              if [ -n "$EXISTING_LABELS" ]; then
+                echo "$LABELS" | while IFS= read -r label; do
+                  gh issue edit "$EXISTING_ISSUE" --add-label "$label"
+                done
+              fi
+
+              if [ -n "$LABELS" ]; then
+                gh issue edit "$EXISTING_ISSUE" $(echo "$LABELS" | tr ' ' '\n' | awk '{print "--add-label " $1}')
+              fi
             fi
           done
