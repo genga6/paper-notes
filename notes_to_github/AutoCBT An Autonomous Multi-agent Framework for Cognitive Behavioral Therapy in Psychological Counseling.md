@@ -14,7 +14,7 @@
     - 中国語の相談はQwen-2.5-72B、英語の相談はLlama-3.1-70Bを使用
     - ルーティング機構により適切な監督エージェントを選択し、自己最適化を実現
 
-![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/AutoCBT_An_ Autonomous_Multiagent_Framework_for_Cognitive_Behavioral_Therapy_in_Psychological_Counseling_1.png)
+![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/AutoCBT_An_Autonomous_Multiagent_Framework_for_Cognitive_Behavioral_Therapy_in_Psychological_Counseling_1.png)
 
 - 従来のCBT-LLMと比較した利点
     - CBTのコア原則（共感・認知の歪みの特定・戦略の提案・励まし）に基づいた応答品質の向上
