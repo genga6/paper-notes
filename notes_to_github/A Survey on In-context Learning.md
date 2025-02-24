@@ -23,6 +23,7 @@ ICLの学習能力を向上させるトレーニング戦略やプロンプト�
     - 影響因子:
         - 事前学習データの多様性がICLの性能を決定。
         - プロンプトのフォーマットやデモンストレーションの選択がICLの精度に影響。
+    -     ![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/summary_of_factors_that_have_a_relatively_strong_correlation_to_icl.png)
 
 ## Considerations
 - 適切なデモンストレーションがICLの性能を最大化出来る点は、人間に似ていて興味深い。

@@ -15,6 +15,9 @@ Adam（Adaptive Moment Estimation）は、確率的勾配降下法（SGD）の�
     - スパースな勾配に対応：適応的な更新により、勾配がまばらな場合でも効果的に学習が進む。
     - 自動的なステップサイズのアニーリング：収束に向けて、学習率が適切に減衰される。
 - 実験により、ロジスティック回帰、多層パーセプトロン（MLP）、畳み込みニューラルネットワーク（CNN）での有効性を実証。
+-     ![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/logistic_regression_trainging_negative_log_likelihood_on_mnist_and_imdb.png)
+-     ![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/training_of_multilayer_nn_on_mnist_images.png)
+-     ![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/convolutional_nn_traing_cost_and_traing_cost_for_the_first_three_epochs.png)
 
 
 ## Considerations

@@ -12,6 +12,7 @@ AlphaAdamは、レイヤー内のパラメータ更新を非同期にマスク�
 - 理論的収束保証: TransformerのHessian特性を考慮し、AlphaAdamの収束性を証明
 - 大規模LLMへの適用: GPT-2、RoBERTa、Llama-7Bに適用し、AdamWを超える性能を実証
 - 計算コスト削減: メモリ効率と計算効率を向上させながら、収束速度を向上
+-     ![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/comparison_of_results_of_fine_tuning_roberta-base_model_on_glue_benchmark.png)
 
 
 ## Considerations
