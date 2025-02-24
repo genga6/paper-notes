@@ -3,7 +3,7 @@
 
 ## Abstract
 Transformerベースのモデルが **in-context learning（ICL）** を通じて、何故多様な関数クラスを学習できるのかを解明する。著者らは、Transformerが近似的な勾配降下を実行できることを示し、必要なアテンションヘッド数、隠れ層の次元数、層の数の上限を導出した。
-また、線形関数、単位球の指示関数、スムーズな関数をTransformerが学習できることを証明し、線形回帰と分類タスクに対して精度の高い予測が可能であることが示した。 
+また、線形関数、単位球の指示関数、スムーズな関数をTransformerが学習できることを証明し、線形回帰と分類タスクに対して精度の高い予測が可能であることが示した。
 
 
 ## Key Points
@@ -31,4 +31,4 @@ Transformerベースのモデルが **in-context learning（ICL）** を通じ�
 [- [[A Survey on In-context Learning]]](https://arxiv.org/abs/2301.00234)
 
 
-#In-context-Learning
+#Year-2024 #In-context-Learning
