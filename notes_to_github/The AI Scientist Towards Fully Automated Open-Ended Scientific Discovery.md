@@ -1,4 +1,5 @@
 **Paper URL:** [arXiv](https://arxiv.org/abs/2408.06292)
+**Github URL:** https://github.com/SakanaAI/AI-Scientist
 
 
 ## Abstract
