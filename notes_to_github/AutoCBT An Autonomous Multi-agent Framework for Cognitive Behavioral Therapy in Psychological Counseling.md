@@ -13,9 +13,6 @@
     - Supervisor Agentが助言を提供
     - 中国語の相談はQwen-2.5-72B、英語の相談はLlama-3.1-70Bを使用
     - ルーティング機構により適切な監督エージェントを選択し、自己最適化を実現
-
-![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/AutoCBT_An_Autonomous_Multiagent_Framework_for_Cognitive_Behavioral_Therapy_in_Psychological_Counseling_1.png)
-
 - 従来のCBT-LLMと比較した利点
     - CBTのコア原則（共感・認知の歪みの特定・戦略の提案・励まし）に基づいた応答品質の向上
     - 動的ルーティングによる柔軟な応答構築（単一LLMの静的応答と異なる）
@@ -26,6 +23,8 @@
     - 同じ監督に繰り返し助言を求める問題 → ルーティング制御による回避
     - 監督エージェントが助言でなく直接応答してしまう問題 → プロンプト調整による役割明確化
     - ルーティングループの発生 → エージェント間の送信制御
+
+![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/AutoCBT_An_Autonomous_Multiagent_Framework_for_Cognitive_Behavioral_Therapy_in_Psychological_Counseling_1.png)
 
 
 ## Considerations

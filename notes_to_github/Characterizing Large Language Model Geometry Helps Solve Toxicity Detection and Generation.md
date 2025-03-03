@@ -13,18 +13,16 @@
 - 毒性検出への応用
     - 幾何学的特徴（MHA出力の内在次元、MLP層のアフィン領域など）を用いることで、毒性を判別可能
     - Llama2-7BおよびMistral-7Bにおいて、既存の毒性検出手法を上回るROC-AUCを達成（99.18%）
-
-![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/Characterizing_Large_Language_Model_Geometry_Helps_Solve_Toxicity_Detection_and_Generation_2.png)
-
 - RLHFの回避
     - 特定のプロンプト操作を行うことで、LLMの埋め込み内在次元を意図的に増加させ、RLHFによる抑制を回避可能
     - これは、モデルが特定の埋め込みサブスペースに制限されていることに起因する
-
-![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/Characterizing_Large_Language_Model_Geometry_Helps_Solve_Toxicity_Detection_and_Generation_1.png)
-
 - MLP層の分割構造
     - MLP層は、連続的なアフィン変換（スプライン関数）によって構成されており、その分割数がLLMの表現力を決定する
     - MHAの内在次元が増加すると、MLPの非線形性が指数的に向上し、複雑なタスクの処理が可能になる
+
+![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/Characterizing_Large_Language_Model_Geometry_Helps_Solve_Toxicity_Detection_and_Generation_1.png)
+
+![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/Characterizing_Large_Language_Model_Geometry_Helps_Solve_Toxicity_Detection_and_Generation_2.png)
 
 
 ## Considerations

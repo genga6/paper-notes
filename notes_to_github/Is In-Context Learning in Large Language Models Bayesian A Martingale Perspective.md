@@ -10,16 +10,15 @@
 - マルチンゲール性と交換可能性
     - データの挿入順序や欠損データの補完に依存しない予測にはマーチンゲール性が必要だが、現状のLLMはそれを満たさないことを実験で確認。
     - LLMは自身が生成した欠損データ（プロンプト内のデータ）により予測が変動する**Introspective hallucinations（内省的幻覚）** を起こす可能性がある。
+- 不確実性の分解
+    - LLMが持つ不確実性を「データを増やすことで減少する**認識的不確実性（Epistemic Uncertainty）**」と「データが無限でも残る**偶然的不確実性（Aleatoric Uncertainty）**」に分ける方法を理論的に提示。
+    - 実験により、LLMの認識的不確実性の減少速度がベイズモデルと一致しないことを確認
  
 ![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/Is_In_Context_Learning_in_Large_Language_Models_Bayesian_A_Martingale_Perspective_1.png)
 
 ![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/Is_In_Context_Learning_in_Large_Language_Models_Bayesian_A_Martingale_Perspective_2.png)
 
 ![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/Is_In_Context_Learning_in_Large_Language_Models_Bayesian_A_Martingale_Perspective_3.png)
-
-- 不確実性の分解
-    - LLMが持つ不確実性を「データを増やすことで減少する**認識的不確実性（Epistemic Uncertainty）**」と「データが無限でも残る**偶然的不確実性（Aleatoric Uncertainty）**」に分ける方法を理論的に提示。
-    - 実験により、LLMの認識的不確実性の減少速度がベイズモデルと一致しないことを確認。
 
 ![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/Is_In_Context_Learning_in_Large_Language_Models_Bayesian_A_Martingale_Perspective_4.png)
 

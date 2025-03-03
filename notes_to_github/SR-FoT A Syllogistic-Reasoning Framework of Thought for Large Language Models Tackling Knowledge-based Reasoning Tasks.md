@@ -15,13 +15,11 @@ Chain-of-Thought（CoT）は一部のケースで推論能力を向上させる�
 - 知識ベース推論タスクでの評価
     - ScienceQA、StrategyQA、BoolQの3つのデータセットを用いてSR-FoTの評価を実施。
     - GPT-3.5-turbo、DeepSeek-V2、Qwen1.5-32B-Chatの3つのLLMで実験を行い、SR-FoTは一貫して高い精度を示した。
-
-![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/SR_FoT_A_Syllogistic_Reasoning_Framework_of_Thought_for_Large_Language_Models_Tackling_Knowledge_based_Reasoning_Tasks_1.png)
-
-
 -  推論精度向上のメカニズム
     - SR-FoTは問題ごとに適切な前提を導き出し、それを基に厳密な演繹推論を実行。
     - ただし問題によって前提の選択が曖昧になり、誤った結論に達するリスクがある。
+
+![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/SR_FoT_A_Syllogistic_Reasoning_Framework_of_Thought_for_Large_Language_Models_Tackling_Knowledge_based_Reasoning_Tasks_1.png)
 
 
 ## Considerations
