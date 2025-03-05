@@ -37,7 +37,7 @@
 
 
 ## Related Work 
-[- [[The AI Scientist Towards Fully Automated Open-Ended Scientific Discovery]]]((https://arxiv.org/abs/2408.06292)
+[- [[The AI Scientist Towards Fully Automated Open-Ended Scientific Discovery]]](https://arxiv.org/abs/2408.06292)
 [- [[DOLPHIN Closed-loop Open-ended Auto-research through Thinking, Practice, and Feedback]]](https://arxiv.org/abs/2501.03916)
 
 ## Labels
