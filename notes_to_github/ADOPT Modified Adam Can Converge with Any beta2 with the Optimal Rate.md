@@ -18,9 +18,9 @@ Adamはディープラーニングで広く用いられる最適化手法だが�
 	- 画像分類（CIFAR-10, ImageNet）、生成モデル（NVAE）、言語モデル（GPT-2, LLaMA-7B）など幅広いタスクでAdamやAMSGradより高い性能を発揮。
 
 
-![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/ADOPT_Modified_Adam_Can_Converge_with_Any_β2_with_the_Optimal_Rate_1.png)
+![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/ADOPT_Modified_Adam_Can_Converge_with_Any_beta2_with_the_Optimal_Rate_1.png)
 
-![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/ADOPT_Modified_Adam_Can_Converge_with_Any_β2_with_the_Optimal_Rate_2.png)
+![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/ADOPT_Modified_Adam_Can_Converge_with_Any_beta2_with_the_Optimal_Rate_2.png)
 
 
 ## Considerations
