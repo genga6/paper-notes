@@ -22,6 +22,8 @@ Adam（Adaptive Moment Estimation）は、確率的勾配降下法（SGD）の�
 
 ![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/Adam_A_Method_for_Stochastic_Optimization_3.png)
 
+![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/Adam_A_Method_for_Stochastic_Optimization_4.png)
+
 
 ## Considerations
 - 最近では、スパースなパラメータ更新がホット？
