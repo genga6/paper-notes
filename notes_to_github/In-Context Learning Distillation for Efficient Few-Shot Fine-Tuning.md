@@ -28,11 +28,16 @@
 
 
 ## Considerations
-- 教師モデル（OPT-1.3B）がICLを用いて推論を行い、その推論過程を生徒モデル（OPT-125M）に蒸留。
+- ICL-Dの違い
+	- ICL-D:（In-context Learning Distillation） 
+		- 大規模モデルが推論時に示す**ICLの振る舞い**を模倣させ、小規模モデルもプロンプトからFew-shot学習できるように蒸留する。
+		- In-context learning用の損失と言語モデリング用の損失を組み合わせる
+	- CD:（Context Distillation） 
+		- プロンプトを含む入力文脈を教師モデルで処理させ、その**ロジット分布**と生徒モデルのロジット分布の間のKLダイバージェンスを最小化する形で知識蒸留。
+		- より特定の分野に特化する可能性が高そう
 - アプリケーション
 	- 数百MB程度のAIモデルであれば、ユーザーPC（ゲーミングPCレベル）でも推論できそう？
 	- 量子化やプルーニングでより確実に運用できそうだが、ICL能力とトレードオフか。
-
 
 ## Related Work 
 [- [[In-context Learning Distillation Transferring Few-shot Learning Ability of Pre-trained Language Models]]](https://arxiv.org/abs/2212.10670)
