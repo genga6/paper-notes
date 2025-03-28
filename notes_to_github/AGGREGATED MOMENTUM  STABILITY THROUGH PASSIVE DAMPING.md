@@ -23,7 +23,7 @@
     - デフォルト設定（β = [0, 0.9, 0.99]）でほとんどのタスクにおいて高い性能
     - 大きな β（例: 0.999）でも振動せず安定して学習が進む（既存研究との差別化）
 
-![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/comparison_with_the_state_of_the_art_methods.png)
+![Image](https://raw.githubusercontent.com/genga6/paper-notes/main/images/comparison_with_the_state_of_the_art_methods_1.png)
 
 
 ## Considerations
